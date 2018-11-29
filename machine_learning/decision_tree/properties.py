@@ -1,8 +1,13 @@
+from __future__ import annotations
 from typing import Callable, TypeVar, List, Tuple, Generic
 
 T = TypeVar('T')
 U = TypeVar('U')
+V = TypeVar('V')
+K = TypeVar('K')
 
+KeySelector = Callable[[T], K]
+Transform = Callable[[T], U]
 
 class Feature(Generic[T]):
     def __init__(self, description: str, accept: Callable[[T], bool]):
@@ -32,6 +37,16 @@ class Property(Generic[T, U]):
     def __init__(self, name: str, selector: Callable[[T], U]):
         self.name = name
         self.of = selector
+
+    def memoize(self) -> Property[T, U]:
+        cache = {}
+
+        def get(element: T) -> U:
+            if element not in cache:
+                cache[element] = self.of(element)
+            return cache[element]
+
+        return Property(name='[mem]' + self.name, selector=get)
 
     def __lt__(self, value: U) -> Feature:
         return Feature(
