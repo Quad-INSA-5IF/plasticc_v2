@@ -20,6 +20,15 @@ salmon = '#f5c8af'
 green_light = '#9ac483'
 grey_light = '#9e9ea2'
 
+passband_colors = [
+    '#7f629e', # u: purple
+    '#99bb61', # g: green
+    '#c0504f', # r: red
+    '#f8954e', # i: orange
+    '#b78373', # z: brown
+    '#484753' # Y: grey
+]
+
 category_3 = [
     blue,
     lime,

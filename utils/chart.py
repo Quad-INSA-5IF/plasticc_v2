@@ -68,18 +68,27 @@ class Chart:
         elif type(color) is str:
             color = _.map(x, lambda _x: color)
         if size is None:
-            size = _.map(x, lambda _x: .8)
-        self.ax.scatter(
-            x,
-            y,
-            size=size,
-            color=color,
-            marker=marker,
-            alpha=alpha,
-            label=label
-        )
+            self.ax.scatter(
+                x,
+                y,
+                color=color,
+                marker=marker,
+                alpha=alpha,
+                label=label
+            )
+        else:
+            self.ax.scatter(
+                x,
+                y,
+                s=size,
+                color=color,
+                marker=marker,
+                alpha=alpha,
+                label=label
+            )
+
         if label != '':
-            self.ax.legend(loc='upper right')
+            self.ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
         return self
 
     def line_data(
@@ -108,7 +117,7 @@ class Chart:
             data: Iterable[T],
             x: ValueSelector[T],
             y: ValueSelector[T],
-            size: ValueSelector[T] = lambda _x: 1.0,
+            size: Optional[ValueSelector[T]] = None,
             color: ColorSelector[T] = lambda _it: '#1f77b4',
             label: str = '',
             marker: str = 'x',
@@ -117,20 +126,19 @@ class Chart:
         _x = []
         _y = []
         _c = []
-        _z = []
+        _z = None if size is None else _.map(data, size)
         for element in data:
             _x.append(x(element))
             _y.append(y(element))
             _c.append(color(element))
-            _z.append(size(element))
         return self.scatter(
             _x,
             _y,
             size=_z,
             color=_c,
+            label=label,
             marker=marker,
-            alpha=alpha,
-            label=label
+            alpha=alpha
         )
 
     def bar_data(

@@ -24,7 +24,7 @@ __CLASS_TARGET__ = {
 class Metadata():
 
     def __init__(self, object_id: int, ra: float, decl: float, gal_l: float, gal_b: float, ddf: bool, specz: float,
-                 photoz: float, photoz_err: float, distmod: float, mwebv: float, target: int) -> None:
+                 photoz: float, photoz_err: float, distmod: float, mwebv: float, target: int, kaggle_target: int) -> None:
         self.object_id = object_id
         self.ra = ra
         self.decl = decl
@@ -37,9 +37,10 @@ class Metadata():
         self.distmod = distmod
         self.mwebv = mwebv
         self.target = target
+        self.kaggle_target = kaggle_target
 
     def __repr__(self):
-        return '(object_id: {}, ra: {}, decl: {}, gal_l: {}, gal_b: {}, ddf: {}, specz: {}, photoz: {}, photoz_err: {}, distmod: {}, mwebv: {}, target: {})'.format(
+        return '(object_id: {}, ra: {}, decl: {}, gal_l: {}, gal_b: {}, ddf: {}, specz: {}, photoz: {}, photoz_err: {}, distmod: {}, mwebv: {}, target: [{} -> {}])'.format(
             self.object_id,
             self.ra,
             self.decl,
@@ -51,6 +52,7 @@ class Metadata():
             self.photoz_err,
             self.distmod,
             self.mwebv,
+            self.kaggle_target,
             self.target
         )
 
@@ -62,7 +64,8 @@ class Metadata():
 
 
 def from_line(line: List[str]) -> Metadata:
-    target = __CLASS_TARGET__[int(line[11])] if len(line) == 12 else -1
+    kaggle_target = int(line[11]) if len(line) == 12 else -1
+    target = __CLASS_TARGET__[kaggle_target] if len(line) == 12 else -1
     return Metadata(
         object_id=int(line[0]),
         ra=float(line[1]),
@@ -75,7 +78,8 @@ def from_line(line: List[str]) -> Metadata:
         photoz_err=float(line[8]),
         distmod=float(line[9]),
         mwebv=float(line[10]),
-        target=target
+        target=target,
+        kaggle_target=kaggle_target
     )
 
 
