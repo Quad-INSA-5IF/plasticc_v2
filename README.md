@@ -2,10 +2,38 @@
 
 <span class="notice">
 The classes are mapped to an integer. We are using the convention [real_class -> mapped_integer] in our graphics. If
-some of the two values is missing (ex: class[xx -> 11]) please refer you to the following mapping.
+some of the two values is missing (ex: class[xx -> 11]) please refer you to the chapter Class Mapping.
 </span>
 
-# Class Mapping
+## Summary
+1. [Class Mapping](#Class Mapping)
+2. [Data analysis](#Data analysis)
+    1. [Intra galactic](#Intra galactic)
+        * [Class 6 -> 11](#Class 6_11)
+        * [Class 92 -> 0](#Class 92_0)
+        * [Class 16 -> 5](#Class 16_5)
+        * [Class 53 -> 13](#Class 53_13)
+        * [Class 65 -> 4](#Class 65_4)
+    2. [Extra galactic](#Extra galactic)
+        * [Class 64 -> 12](#Class 64_12)
+        * [Class 88 -> 1](#Class 88_1)
+        * [Class 15 -> 9](#Class 15_9)
+        * [Class 42 -> 2](#Class 42_2)
+        * [Class 52 -> 10](#Class 52_10)
+        * [Class 62 -> 8](#Class 62_8)
+        * [Class 67 -> 6](#Class 67_6)
+        * [Class 90 -> 3](#Class 90_3)
+        * [Class 95 -> 7](#Class 95_7)
+3. [Features](#Features)
+    1. [Intra galactic](#Intra galactic)
+    2. [Deep survey](#Deep survey)
+    3. [Periodogram](#Periodogram)
+    4. [Outliers (using MAD)](#MAD Outliers)
+    5. [Light bands ratios](#Light bands ratios)
+    6. [Rises detection](#Rises detection)
+    7. [Descents detection](#Descents detection)
+    
+## Class Mapping
 - 92 -> 0
 - 88 -> 1
 - 42 -> 2
@@ -24,7 +52,7 @@ some of the two values is missing (ex: class[xx -> 11]) please refer you to the 
 
 ## Data analysis
 ### Intra galactic
-#### Class 6 -> 11
+#### Class 6_11
 Non periodic but symmetric light curves
 
 ![./graphics/light_curves_cls11_object0.png](graphics/light_curves_cls11_object0.png)
@@ -34,7 +62,7 @@ Non periodic but symmetric light curves
 ![./graphics/light_curves_cls11_object4.png](graphics/light_curves_cls11_object4.png)
 ![./graphics/light_curves_cls11_object5.png](graphics/light_curves_cls11_object5.png)
 
-#### Class 92 -> 0
+#### Class 92_0
 Periodic bands (need periodogram): looks like a sinusoid
 
 ![./graphics/light_curves_cls0_object0.png](graphics/light_curves_cls0_object0.png)
@@ -44,7 +72,7 @@ Periodic bands (need periodogram): looks like a sinusoid
 ![./graphics/light_curves_cls0_object4.png](graphics/light_curves_cls0_object4.png)
 ![./graphics/light_curves_cls0_object5.png](graphics/light_curves_cls0_object5.png)
 
-#### Class 16 -> 5
+#### Class 16_5
 A lot of points are near 0, some of them are below zero. All the light bands move at the same time
 
 ![./graphics/light_curves_cls5_object0.png](graphics/light_curves_cls5_object0.png)
@@ -55,7 +83,7 @@ A lot of points are near 0, some of them are below zero. All the light bands mov
 ![./graphics/light_curves_cls5_object5.png](graphics/light_curves_cls5_object5.png)
 
 
-#### Class 53 -> 13
+#### Class 53_13
 Periodic bands (but not regular as class 92 -> 0)
 
 ![./graphics/light_curves_cls13_object0.png](graphics/light_curves_cls13_object0.png)
@@ -66,7 +94,7 @@ Periodic bands (but not regular as class 92 -> 0)
 ![./graphics/light_curves_cls13_object5.png](graphics/light_curves_cls13_object5.png)
 
 
-#### Class 65 -> 4
+#### Class 65_4
 Very stable bands with very high points (use median absolute deviation to detect outliers)
 
 ![./graphics/light_curves_cls4_object0.png](graphics/light_curves_cls4_object0.png)
@@ -78,7 +106,7 @@ Very stable bands with very high points (use median absolute deviation to detect
 
 
 ### Extra galactic
-#### Class 64 -> 12
+#### Class 64_12
 Looks like class 64 -> 4 but it's extra galactic
 
 ![./graphics/light_curves_cls12_object0.png](graphics/light_curves_cls12_object0.png)
@@ -89,7 +117,7 @@ Looks like class 64 -> 4 but it's extra galactic
 ![./graphics/light_curves_cls12_object5.png](graphics/light_curves_cls12_object5.png)
 
 
-#### Class 88 -> 1
+#### Class 88_1
 No periodic, very noisy. Almost all points are not at zero.
 
 ![./graphics/light_curves_cls1_object0.png](graphics/light_curves_cls1_object0.png)
@@ -100,7 +128,7 @@ No periodic, very noisy. Almost all points are not at zero.
 ![./graphics/light_curves_cls1_object5.png](graphics/light_curves_cls1_object5.png)
 
 
-#### Class 15 -> 9
+#### Class 15_9
 A lot of points are near 0 but they are rise/descent
 Use the ratio between the light bands.
 
@@ -112,7 +140,7 @@ Use the ratio between the light bands.
 ![./graphics/light_curves_cls9_object5.png](graphics/light_curves_cls9_object5.png)
 
 
-#### Class 42 -> 2
+#### Class 42_2
 Same as 15 -> 9.
 
 ![./graphics/light_curves_cls2_object0.png](graphics/light_curves_cls2_object0.png)
@@ -123,7 +151,7 @@ Same as 15 -> 9.
 ![./graphics/light_curves_cls2_object5.png](graphics/light_curves_cls2_object5.png)
 
 
-#### Class 52 -> 10
+#### Class 52_10
 Same as 15 -> 9.
 Red bands seems to be lower (check the real bands mapping)
 
@@ -135,7 +163,7 @@ Red bands seems to be lower (check the real bands mapping)
 ![./graphics/light_curves_cls10_object5.png](graphics/light_curves_cls10_object5.png)
 
 
-#### Class 62 -> 8
+#### Class 62_8
 Fast rise/descent
 
 ![./graphics/light_curves_cls8_object0.png](graphics/light_curves_cls8_object0.png)
@@ -146,7 +174,7 @@ Fast rise/descent
 ![./graphics/light_curves_cls8_object5.png](graphics/light_curves_cls8_object5.png)
 
 
-#### Class 67 -> 6
+#### Class 67_6
 Fast rise/descent
 
 ![./graphics/light_curves_cls6_object0.png](graphics/light_curves_cls6_object0.png)
@@ -157,7 +185,7 @@ Fast rise/descent
 ![./graphics/light_curves_cls6_object5.png](graphics/light_curves_cls6_object5.png)
 
 
-#### Class 90 -> 3
+#### Class 90_3
 Looks more bright than the others (confirm this hypothesis)
 
 ![./graphics/light_curves_cls3_object0.png](graphics/light_curves_cls3_object0.png)
@@ -167,7 +195,7 @@ Looks more bright than the others (confirm this hypothesis)
 ![./graphics/light_curves_cls3_object4.png](graphics/light_curves_cls3_object4.png)
 ![./graphics/light_curves_cls3_object5.png](graphics/light_curves_cls3_object5.png)
 
-#### Class 95 -> 7
+#### Class 95_7
 Strong rise (more triangular shape)
 The light bands don't reach their max at the same time.
 
