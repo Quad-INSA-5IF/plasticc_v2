@@ -1,4 +1,3 @@
-from __future__ import annotations
 from typing import Callable, TypeVar, List, Tuple, Generic
 
 T = TypeVar('T')
@@ -38,7 +37,7 @@ class Property(Generic[T, U]):
         self.name = name
         self.of = selector
 
-    def memoize(self) -> Property[T, U]:
+    def memoize(self):
         cache = {}
 
         def get(element: T) -> U:

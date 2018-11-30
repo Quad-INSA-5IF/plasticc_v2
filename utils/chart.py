@@ -1,4 +1,3 @@
-from __future__ import annotations
 from typing import Union, Callable, List, TypeVar, Dict, Iterable
 
 from utils import underscore as _
@@ -39,7 +38,7 @@ class Chart:
             label: str = '',
             color: str = '#1f77b4',
             style: str = '-'
-    ) -> Chart:
+    ):
         self.ax.plot(
             x,
             y,
@@ -62,7 +61,7 @@ class Chart:
             label: str = '',
             marker: str = 'x',
             alpha: float = 1.0
-    ) -> Chart:
+    ):
         if color is None:
             color = _.map(x, lambda _x: '#1f77b4')
         elif type(color) is str:
@@ -98,7 +97,7 @@ class Chart:
             y: ValueSelector[T],
             color: str = '#1f77b4',
             style: str = '-'
-    ) -> Chart:
+    ):
         xAxis = []
         values = []
         for element in data:
@@ -122,7 +121,7 @@ class Chart:
             label: str = '',
             marker: str = 'x',
             alpha: float = 1.0
-    ) -> Chart:
+    ):
         _x = []
         _y = []
         _c = []
@@ -144,9 +143,9 @@ class Chart:
     def bar_data(
             self,
             data: List[T],
-            x: KeySelector[T],
+            x: KeySelector[T, K],
             y: ValueSelector[T]
-    ) -> Chart:
+    ):
         xAxis = []
         values = []
         for element in data:
@@ -161,7 +160,7 @@ class Chart:
     def bar_dict(
             self,
             dict: Dict[T, Number]
-    ) -> Chart:
+    ):
         xAxis = []
         values = []
         for x, element in dict.items():

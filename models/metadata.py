@@ -1,4 +1,3 @@
-from __future__ import annotations
 from typing import List
 
 from machine_learning.decision_tree.properties import Property
@@ -56,11 +55,14 @@ class Metadata():
             self.target
         )
 
-    DDF: Property[Metadata, bool] = Property('ddf', lambda meta: meta.ddf)
-    PHOTOZ: Property[Metadata, float] = Property('photoz', lambda meta: meta.photoz)
-    SPECZ: Property[Metadata, float] = Property('specz', lambda meta: meta.specz)
-    MWEBV: Property[Metadata, float] = Property('mwebv', lambda meta: meta.mwebv)
-    LABEL: Property[Metadata, int] = Property('label', lambda meta: meta.target)
+    def __eq__(self, other):
+        if type(other) is not Metadata:
+            return False
+        else:
+            return self.object_id == other.object_id
+
+    def __hash__(self):
+        return hash(self.object_id)
 
 
 def from_line(line: List[str]) -> Metadata:

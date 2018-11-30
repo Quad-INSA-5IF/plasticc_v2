@@ -1,7 +1,7 @@
 from typing import List, Union
-
+"""
 from PIL import Image
-
+"""
 Number = Union[int, float]
 
 teal = '#267278'
@@ -77,7 +77,7 @@ category_15 = [
     grey_light
 ]
 
-
+"""
 def build_scale(color_name: str) -> List[str]:
     png_image = Image.open('color_scales/{}.png'.format(color_name))
     pixels = png_image.load()
@@ -112,7 +112,7 @@ sinebow_scale = build_scale('Sinebow')
 spectral_scale = build_scale('Spectral')
 viridis_scale = build_scale('Viridis')
 warm_scale = build_scale('Warm')
-
+"""
 
 def rescale(scale: List[str], values: List[Number], reverse: bool = False) -> List[str]:
     _min = min(values)

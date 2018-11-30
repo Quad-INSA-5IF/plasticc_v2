@@ -1,13 +1,13 @@
 from typing import List, Callable, TypeVar, Union
 
 T = TypeVar('T')
-
+Option = Union[T, None]
 
 def read_csv(
         file_path: str,
         has_header: bool,
         transform: Callable[[List[str]], T],
-        max: Union[int, None] = None
+        max: Option[int] = None
 ) -> List[T]:
     csv_file = open(file_path, "r")
 

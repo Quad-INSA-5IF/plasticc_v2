@@ -1,7 +1,6 @@
-import colors
 import models.metadata as metadata
 import models.record as record
-from utils import underscore as _
+from utils import underscore as _, colors
 from utils.chart import Chart
 from utils.csv_reader import read_csv
 

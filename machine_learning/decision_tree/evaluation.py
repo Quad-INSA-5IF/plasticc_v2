@@ -1,11 +1,10 @@
 from typing import TypeVar, Generic, List
 
-import colors
+import utils.underscore as _
 from machine_learning.decision_tree.decision_tree import ComputedDecisionTree
 from machine_learning.decision_tree.properties import Property
-
-import utils.underscore as _
-from utils.chart import Chart
+# from utils import colors
+# from utils.chart import Chart
 
 T = TypeVar('T')
 Type = TypeVar('Type')
@@ -49,6 +48,7 @@ def evaluate(
     accuracy = _.count(test_set, is_well_classified) / float(len(test_set))
     print(f'Accuracy: {accuracy}')
 
+    """
     if show_chart:
         count_by_label = _.count_by(test_set, get_label)
         data = _.count_by(
@@ -74,3 +74,4 @@ def evaluate(
             marker='.'
         )
         chart.show()
+    """

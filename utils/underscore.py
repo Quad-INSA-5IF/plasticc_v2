@@ -10,6 +10,7 @@ Predicate = Callable[[T], bool]
 Consumer = Callable[[T], None]
 Transform = Callable[[T], U]
 KeySelector = Callable[[T], K]
+Option = Union[T, None]
 
 
 def identity(it: Any) -> Any:
@@ -230,3 +231,11 @@ def sum_double_by(
         sum += by(data)
         count += 1
     return sum / float(count)
+
+
+def max(iter: Iterable[T]) -> Option[T]:
+    best = None
+    for data in iter:
+        if best is None or data > best:
+            best = data
+    return best
