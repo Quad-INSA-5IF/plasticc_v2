@@ -11,6 +11,8 @@ class PropertyBuilder:
     def __init__(self, light_curves_loader: Callable[[Metadata], List[Record]]):
         self.load = light_curves_loader
 
+    def LABEL(self) -> Property[Metadata, bool]: return Property('label', lambda x: x.target)
+
     def DDF(self) -> Property[Metadata, bool]: return Property('ddf', lambda x: x.ddf)
 
     def PHOTOZ(self) -> Property[Metadata, float]: return Property('photoz', lambda x: x.photoz)
@@ -97,3 +99,12 @@ class PropertyBuilder:
     def _flux_err_passband_z(self, star: Metadata): return self._get_flux_err(self._passband_z(star))
 
     def _flux_err_passband_Y(self, star: Metadata): return self._get_flux_err(self._passband_Y(star))
+
+    @staticmethod
+    def max(property: Property[Metadata, List[float]]) -> Property[Metadata, float]:
+        return Property(
+            name=f'max({property.name}',
+            selector=lambda star: _.max(property.of(star))
+        )
+
+
